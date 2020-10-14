@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: approval-service
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        default_schema: approval
+  datasource:
+    url: jdbc:postgresql://localhost:5432/erp
+    username: postgres
+    password: 12345
+  jackson:
+    date-format: dd-MM-yyyy
+eureka:
+  client:
+    enabled: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    appname: approval-service
+server:
+  port: 7002
