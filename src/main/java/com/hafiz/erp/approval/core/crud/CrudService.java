@@ -58,7 +58,7 @@ public abstract class CrudService<E extends BaseEntity> implements ICrudService<
         id.ifPresent(repository::deleteById);
     }
 
-    private Optional<E> getEntity(E e) {
+    protected Optional<E> getEntity(E e) {
         e.setCreatedAt(new Date());
         //TODO Set created by id in a common way
         e.setCreatedBy(UUID.randomUUID());
