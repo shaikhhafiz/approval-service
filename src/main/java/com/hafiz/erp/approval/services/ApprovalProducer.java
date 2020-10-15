@@ -1,5 +1,6 @@
 package com.hafiz.erp.approval.services;
 
+import com.hafiz.erp.approval.dataclass.ApprovalResponseDTO;
 import com.hafiz.erp.approval.entities.Approval;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -13,8 +14,17 @@ public class ApprovalProducer {
 
   public void produceMessage(Approval entity) {
     this.template.executeInTransaction(kafkaTemplate -> {
-      kafkaTemplate.send("pending-approval", entity);
+      ApprovalResponseDTO response = buildResponseDTO(entity);
+      kafkaTemplate.send("pending-approval", response);
       return null;
     });
+  }
+
+  private ApprovalResponseDTO buildResponseDTO(Approval entity) {
+    ApprovalResponseDTO response = new ApprovalResponseDTO();
+    response.setSource(entity.getSource());
+    response.setSourceRecordId(entity.getSourceRecordId());
+    response.setStatus("Pending");
+    return response;
   }
 }
