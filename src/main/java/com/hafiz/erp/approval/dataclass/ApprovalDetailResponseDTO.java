@@ -10,5 +10,6 @@ import java.util.UUID;
 public class ApprovalDetailResponseDTO extends IdHolder {
     private UUID approvalId;
     private UUID detailId;
-    private BigDecimal qty;
+    private String detail;
+    private BigDecimal detailQty;
 }

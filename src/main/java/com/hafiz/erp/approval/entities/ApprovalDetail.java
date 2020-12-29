@@ -14,5 +14,6 @@ import java.util.UUID;
 public class ApprovalDetail extends BaseEntity {
     private UUID approvalId;
     private UUID detailId;
-    private BigDecimal qty;
+    private String detail;
+    private BigDecimal detailQty;
 }

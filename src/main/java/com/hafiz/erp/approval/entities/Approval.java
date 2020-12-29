@@ -5,7 +5,6 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.Date;
 import java.util.UUID;
 
 @Data
@@ -13,6 +12,6 @@ import java.util.UUID;
 @Table(name = "approval")
 public class Approval extends BaseEntity {
     private UUID sourceRecordId;
-    private String source;
+    private String sourceRecord;
     private String status;
 }

@@ -22,7 +22,7 @@ public class ApprovalProducer {
 
   private ApprovalResponseDTO buildResponseDTO(Approval entity) {
     ApprovalResponseDTO response = new ApprovalResponseDTO();
-    response.setSource(entity.getSource());
+    response.setSourceRecord(entity.getSourceRecord());
     response.setSourceRecordId(entity.getSourceRecordId());
     response.setStatus("Pending");
     return response;
