@@ -6,6 +6,8 @@ import lombok.Data;
 import java.util.UUID;
 
 @Data
-public class ApprovalUpdateDTO extends IdHolder {
+public class ApprovalDTO extends IdHolder {
+    private UUID sourceRecordId;
+    private String sourceRecord;
     private String status;
 }

@@ -20,7 +20,7 @@ public class ApprovalService extends CrudService<Approval> implements IApprovalS
     @Override
     public Approval create(Optional<Approval> entity) {
         Approval createdEntity = super.create(entity);
-//        this.producer.produceMessage(createdEntity);
+        this.producer.produceMessage(createdEntity);
         return createdEntity;
     }
 }
