@@ -1,8 +1,11 @@
 package com.hafiz.erp.approval.core.crud;
 
+import com.hafiz.erp.approval.core.validatorgroup.CreateValidateGroup;
+import com.hafiz.erp.approval.core.validatorgroup.UpdateValidateGroup;
 import lombok.RequiredArgsConstructor;
 import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.BeanUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +27,7 @@ public abstract class CrudController<E extends BaseEntity, D extends IdHolder> {
     }
 
     @PostMapping
-    public D create(@RequestBody C d) {
+    public D create(@RequestBody @Validated({CreateValidateGroup.class}) C d) {
         return conversionUtility.getDto(
             Optional.ofNullable(
                 service.create(
@@ -35,7 +38,7 @@ public abstract class CrudController<E extends BaseEntity, D extends IdHolder> {
     }
 
     @PutMapping("{id}")
-    public D update(@RequestBody D d, @PathVariable UUID id) {
+    public D update(@RequestBody @Validated({UpdateValidateGroup.class}) D d, @PathVariable UUID id) {
         Optional<E> e = service.getById(id);
         d.setId(id);
         e.ifPresent(value -> BeanUtils.copyProperties(d, value));
