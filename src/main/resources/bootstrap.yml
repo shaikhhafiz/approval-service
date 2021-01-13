@@ -36,4 +36,4 @@ eureka:
   instance:
     appname: approval-service
 server:
-  port: 7002
+  port: 8001

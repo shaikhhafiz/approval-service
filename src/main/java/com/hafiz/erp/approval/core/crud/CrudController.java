@@ -3,7 +3,6 @@ package com.hafiz.erp.approval.core.crud;
 import com.hafiz.erp.approval.core.validatorgroup.CreateValidateGroup;
 import com.hafiz.erp.approval.core.validatorgroup.UpdateValidateGroup;
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +26,7 @@ public abstract class CrudController<E extends BaseEntity, D extends IdHolder> {
     }
 
     @PostMapping
-    public D create(@RequestBody @Validated({CreateValidateGroup.class}) C d) {
+    public D create(@RequestBody @Validated({CreateValidateGroup.class}) D d) {
         return conversionUtility.getDto(
             Optional.ofNullable(
                 service.create(

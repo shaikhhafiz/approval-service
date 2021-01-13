@@ -14,7 +14,7 @@ public class ConversionUtility<E extends BaseEntity, D> {
     private final Type entityType;
     private final Type dtoType;
 
-    public <C> Optional<E> buildEntity(Optional<C> s) {
+    public Optional<E> buildEntity(Optional<D> s) {
         return Optional.of(mapper.map(s.get(), entityType));
     }
 
